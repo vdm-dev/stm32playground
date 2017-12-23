@@ -58,3 +58,5 @@ Objects/
 
 # Keil specific files
 *.uvguix*
+*.scvd
+*.tmp

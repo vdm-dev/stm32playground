@@ -1,3 +1,6 @@
 [submodule "Libraries/CMSIS"]
 	path = Libraries/CMSIS
 	url = https://github.com/ARM-software/CMSIS.git
+[submodule "Libraries/ioLibrary"]
+	path = Libraries/ioLibrary
+	url = https://github.com/Wiznet/ioLibrary_Driver.git
