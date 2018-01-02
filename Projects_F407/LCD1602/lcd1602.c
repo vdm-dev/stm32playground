@@ -37,19 +37,9 @@ void LCD1602_WriteFourBits(uint8_t value)
     delay(1);
     
     GPIO_SetBits(LCD1602_E_PORT, LCD1602_E_PIN);
-
-    for (int i = 0; i < 4; ++i)
-    {
-        if ((value >> i) & 1)
-        {
-            GPIO_SetBits(LCD1602_D_PORT, (1 << i));
-        }
-        else
-        {
-            GPIO_ResetBits(LCD1602_D_PORT, (1 << i));
-        }
-    }
     
+    GPIO_ResetBits(LCD1602_D_PORT, 0x0F);
+    GPIO_SetBits(LCD1602_D_PORT, value & 0x0F);
     delay(1);
     
     GPIO_ResetBits(LCD1602_E_PORT, LCD1602_E_PIN);
@@ -65,20 +55,10 @@ void LCD1602_WriteEightBits(uint8_t value)
     GPIO_ResetBits(LCD1602_E_PORT, LCD1602_E_PIN);
     delay(1);
     
-    GPIO_SetBits(LCD1602_E_PORT, LCD1602_E_PIN);    
+    GPIO_SetBits(LCD1602_E_PORT, LCD1602_E_PIN);
     
-    for (int i = 0; i < 8; ++i)
-    {
-        if ((value >> i) & 1)
-        {
-            GPIO_SetBits(LCD1602_D_PORT, (1 << i));
-        }
-        else
-        {
-            GPIO_ResetBits(LCD1602_D_PORT, (1 << i));
-        }
-    }
-    
+    GPIO_ResetBits(LCD1602_D_PORT, 0xFF);    
+    GPIO_SetBits(LCD1602_D_PORT, value & 0xFF);
     delay(1);
     
     GPIO_ResetBits(LCD1602_E_PORT, LCD1602_E_PIN);
